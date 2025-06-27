@@ -351,6 +351,15 @@
     --sidebar-ring: oklch(0.707 0.022 261.325);
   }
 }
+:root {
+  --grid-line-color: rgba(0, 0, 0, 0.1); /* for light theme */
+}
+
+.dark {
+  --grid-line-color: rgba(255, 255, 255, 0.1); /* for dark theme */
+}
+
+
 
 @layer base {
   * {
