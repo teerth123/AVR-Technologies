@@ -1,5 +1,5 @@
 import e, { Router } from "express";
-import { PrismaClient } from "../generated/prisma";
+import { PrismaClient } from "@prisma/client";
 export const authUserRouter = Router()
 
 // import bodyParser from

@@ -35,20 +35,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.userRouter = void 0;
+exports.authUserRouter = void 0;
 const express_1 = require("express");
-const prisma_1 = require("../generated/prisma");
-exports.userRouter = (0, express_1.Router)();
+const client_1 = require("@prisma/client");
+exports.authUserRouter = (0, express_1.Router)();
 // import bodyParser from
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const dotenv = __importStar(require("dotenv"));
 const auth_middleware_1 = require("../middleware/auth.middleware");
 dotenv.config();
 const secret = process.env.SECRET;
-const prisma = new prisma_1.PrismaClient;
+const prisma = new client_1.PrismaClient;
 //hidden apis for onboarding OEM, resellers
 //operators onboarding apis might have to be public
-exports.userRouter.post("/signup", auth_middleware_1.signupMiddleware, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.authUserRouter.post("/signup", auth_middleware_1.signupMiddleware, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { firstName, lastName, email, password } = req.body;
         const existingUser = yield prisma.user.findUnique({
@@ -100,7 +100,7 @@ exports.userRouter.post("/signup", auth_middleware_1.signupMiddleware, (req, res
         return;
     }
 }));
-exports.userRouter.post("/signin", auth_middleware_1.signinMiddleware, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.authUserRouter.post("/signin", auth_middleware_1.signinMiddleware, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email, password } = req.body;
         const existingUser = yield prisma.user.findUnique({
