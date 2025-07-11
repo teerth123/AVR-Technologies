@@ -7,7 +7,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
+  output   = "../dist/generated/prisma"
 }
 
 datasource db {
@@ -49,6 +49,7 @@ model User{
   ownedStations chargingStation[] @relation("stationOEM")  
   reselledStations chargingStation[] @relation("stationReseller")
   operatedStations chargingStation[] @relation("stationOperator")
+  previuoslyConnectedStatoins chargingStation[] @relation("asEndUser")
   //inherently optional , cuz what if the user is End-User
 
   session Sessions[] //history of chargings
@@ -65,6 +66,8 @@ model chargingStation{
   resellerId Int
   operator User @relation("stationOperator" , fields: [operatorId], references: [id])
   operatorId Int 
+  connectedUser User? @relation("asEndUser", fields: [connectedUserID], references: [id])
+  connectedUserID Int?
 
   totalEnergyConsumption BigInt
   healthPercentage Int
@@ -85,7 +88,7 @@ model Sessions{
   chargingStation chargingStation @relation(fields: [stationId], references: [id])
   stationId Int 
 
-  endUser User @relation(fields: [userId], references: [id])
+  User User @relation(fields: [userId], references: [id])
   userId Int //relation with user (for tracking cars and points)
 
   transactionID String? //transactionId of payment (razorpay or something like that)  | optoinal cuz end user might already have coins

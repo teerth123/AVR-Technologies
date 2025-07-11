@@ -1,5 +1,5 @@
 import Dashboard from "./app/dashboard/OEM/dashboard/Dashboard"
-import {BrowserRouter , Routes, Route} from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react"
 import SignUpPage from "./clerk/Signin"
 import SignInPage from "./clerk/Login"
@@ -8,7 +8,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/sign-in" element={<SignInPage />} />
+        <Route path="/sign-in/*" element={<SignInPage />} /> {/* <-- Note the `/*` */}
         <Route path="/sign-up" element={<SignUpPage />} />
         <Route
           path="/"
@@ -24,6 +24,7 @@ function App() {
           }
         />
       </Routes>
+
     </BrowserRouter>
   )
 }
