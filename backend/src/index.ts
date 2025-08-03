@@ -19,7 +19,7 @@ app.get("/", (req, res)=>{
 app.use("/backend/v1/auth", authUserRouter)
 app.use("/backend/v1", userRouter);
 
-server.listen(3000, ()=>{console.log("server running on 3000")})
+server.listen(5000, ()=>{console.log("server running on 3000")})
 
 
 
