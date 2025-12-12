@@ -5,7 +5,7 @@ README.md
 
 # ⚡ EV Charging Automation Platform – AVR Technologies  
 Smart Slow-Charging System with QR Authentication, IoT Telemetry & Automated Billing
-
+Our project EV Charging Automation Platform was officially selected by the RGSTC Technical Screening Committee as one of the top 3 projects from WCE, receiving a ₹1,00,000 grant recommendation for Phase 2.
 This project was developed as part of the **RGSTC – MSME Internship Programme (Cycle 8, Phase 1)** in collaboration with **AVR Technologies**.  
 It focuses on transforming traditional slow EV charging sockets into **intelligent, trackable, and billable smart charging points**.
 
